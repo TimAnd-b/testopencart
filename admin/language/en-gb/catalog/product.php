@@ -28,6 +28,7 @@ $_['column_action']          = 'Action';
 
 // Entry
 $_['entry_name']             = 'Product Name';
+$_['entry_name_alternative'] = 'Alternate Product Name';
 $_['entry_description']      = 'Description';
 $_['entry_meta_title']       = 'Meta Tag Title';
 $_['entry_meta_keyword']     = 'Meta Tag Keywords';

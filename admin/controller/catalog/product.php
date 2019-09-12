@@ -362,6 +362,7 @@ class ControllerCatalogProduct extends Controller {
 				'product_id' => $result['product_id'],
 				'image'      => $image,
 				'name'       => $result['name'],
+				'name_alternative' => $result['name_alternative'],
 				'model'      => $result['model'],
 				'price'      => $this->currency->format($result['price'], $this->config->get('config_currency')),
 				'special'    => $special,
@@ -502,6 +503,12 @@ class ControllerCatalogProduct extends Controller {
 		} else {
 			$data['error_name'] = array();
 		}
+
+        if (isset($this->error['name_alternative'])) {
+            $data['error_name_alternative'] = $this->error['name_alternative'];
+        } else {
+            $data['error_name_alternative'] = array();
+        }
 
 		if (isset($this->error['meta_title'])) {
 			$data['error_meta_title'] = $this->error['meta_title'];
@@ -1180,6 +1187,10 @@ class ControllerCatalogProduct extends Controller {
 			if ((utf8_strlen($value['name']) < 1) || (utf8_strlen($value['name']) > 255)) {
 				$this->error['name'][$language_id] = $this->language->get('error_name');
 			}
+
+            if ((utf8_strlen($value['name_alternative']) < 1) || (utf8_strlen($value['name_alternative']) > 255)) {
+                $this->error['name_alternative'][$language_id] = $this->language->get('error_name_alternative');
+            }
 
 			if ((utf8_strlen($value['meta_title']) < 1) || (utf8_strlen($value['meta_title']) > 255)) {
 				$this->error['meta_title'][$language_id] = $this->language->get('error_meta_title');
